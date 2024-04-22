@@ -1,9 +1,11 @@
-﻿﻿@{
+﻿@model string
+
+﻿@{
     var isAzureApplication = ServerAppConfig.IsAzureApplication;
     var globalAppSettings = _globalAppSettings;
     var defaultPath = ViewBag.Path;
 }
-<script type="text/javascript">
+<script nonce="@Model" type="text/javascript">
     var exportPathExist = "@Url.Action("CheckExportPathExist", "Administration")";
     var UpdateScheduleExportFileSetting = "@Url.Action("UpdateScheduleExportFileSetting", "Administration")";
     initializeFileSetting(1);
@@ -103,8 +105,6 @@
     </div>
 }
 
-@if (ServerAppConfig.IsSelfHosted)
-   {
    <div class="branding-sub-section admin-page-body">
     <h3 class="title col-xs-12 sub-section-heading blur-whitelable-content">[[[FTP Settings]]]</h3>
     <div id="location-export-options" class="col-sm-8 col-xs-8 no-margin">
@@ -135,5 +135,4 @@
         </form>
     </div>
    </div>
-}
 </form>
